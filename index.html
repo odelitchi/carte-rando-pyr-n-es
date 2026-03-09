@@ -36,16 +36,69 @@
         </style>
 
         <style>
-        html, body, #map {
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
+        html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#map {
+    width: calc(100% - 320px);
+    margin-left: 320px;
+    height: 100%;
+}
         }
         </style>
         <title></title>
     </head>
     <body>
+        <div id="panel" style="
+position:absolute;
+top:0;
+left:0;
+width:320px;
+height:100%;
+background:white;
+z-index:1000;
+padding:20px;
+box-shadow:2px 0 8px rgba(0,0,0,0.2);
+font-family:Arial, Helvetica, sans-serif;
+overflow:auto;
+">
+
+<h2 style="margin-top:0;color:#2c3e50;">
+Randonnées accessibles en train depuis Toulouse
+</h2>
+
+<p style="font-size:14px;">
+Cette carte recense plusieurs itinéraires de randonnée dans les Pyrénées accessibles en train depuis Toulouse.
+</p>
+
+<hr>
+
+<b>Filtrer par niveau</b><br>
+
+<select id="filtreNiveau" onchange="filtrerNiveau()" style="margin-top:6px;width:100%;">
+<option value="tous">Tous les niveaux</option>
+<option value="Facile">Facile</option>
+<option value="Intermédiaire">Intermédiaire</option>
+<option value="Difficile">Difficile</option>
+<option value="Très difficile">Très difficile</option>
+</select>
+
+<hr>
+
+<p style="font-size:13px;color:#555;">
+Cliquez sur une randonnée pour voir ses caractéristiques.<br>
+Cliquez sur une gare pour les informations d'accès en train.
+</p>
+
+<p style="font-size:11px;color:#777;">
+Carte réalisée avec QGIS et qgis2web — données : tracés personnels, fond IGN.
+</p>
+
+</div>
         <div id="map">
             <div id="popup" class="ol-popup">
                 <a href="#" id="popup-closer" class="ol-popup-closer"></a>
@@ -64,3 +117,4 @@
         <script src="./resources/qgis2web.js"></script>        
     </body>
 </html>
+
